@@ -1,0 +1,34 @@
+#include <stdio.h>
+#include <string.h>
+char encrypt_map[26] = "XDGSZANYOBTMJCEVFHKWPLQURI";
+char decrypt_map[26] = "abcdefghijklmnopqrstuvwxyz";
+void encrypt(char *text)
+{
+for (int i = 0; text[i] != '\0'; i++)
+text[i] = encrypt_map[text[i] - 'a'];
+void decrypt(char *text)
+}
+{
+for (int i = 0; text[i] != '\0'; i++)
+{
+for (int j = 0; j < 26; j++)
+{
+if (encrypt_map[j] == text[i])
+{
+text[i] = decrypt_map[j];
+break;
+}
+}
+}
+}
+{
+int main()
+char text[100];
+printf("Enter plain text: ");
+scanf("%s", text);
+encrypt(text);
+printf("After Encryption:\n %s\n", text);
+decrypt(text);
+printf("After Decryption:\n %s\n", text);
+return 0;
+}
