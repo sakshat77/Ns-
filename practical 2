@@ -1,0 +1,22 @@
+#include <stdio.h>
+#include <string.h>
+int main() {
+char str[100];
+int i, choice;
+printf("Enter a string: ");
+scanf(" %[^\n]", str);
+printf("Choose an option:\n1. Encrypt\n2. Decrypt\n");
+scanf("%d", &choice);
+if (choice == 1) {
+for (i = 0; str[i] != '\0'; i++)
+str[i] = str[i] + 3;
+printf("Encrypted string: %s\n", str);
+} else if (choice == 2) {
+for (i = 0; str[i] != '\0'; i++)
+str[i] = str[i] - 3;
+printf("Decrypted string: %s\n", str);
+} else {
+printf("Invalid choice\n");
+}
+return 0;
+}
