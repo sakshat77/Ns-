@@ -1,0 +1,32 @@
+// Function to calculate (base^exp) % mod
+function result = mod_exp(base, exp, mod)
+    result = 1;
+    for i = 1:exp
+        result = modulo(result * base, mod);
+    end
+endfunction
+
+// Initialization
+g = 2;         // Generator
+p = 101;       // Prime modulus
+x = 3;         // Alice's private key
+y = 6;         // Bob's private key
+
+// Public values
+R1 = mod_exp(g, x, p);  // Alice's public value
+R2 = mod_exp(g, y, p);  // Bob's public value
+
+// Shared keys
+K_Alice = mod_exp(R2, x, p);  // Alice calculates key
+K_Bob = mod_exp(R1, y, p);    // Bob calculates key
+K_Final = K_Alice;            // Final symmetric key
+
+// Output
+disp("The results are as follows:");
+disp("1) Alice chooses x = " + string(x) + " and calculates R1 = " + string(R1));
+disp("2) Bob chooses y = " + string(y) + " and calculates R2 = " + string(R2));
+disp("3) Alice sends the number " + string(R1) + " to Bob");
+disp("4) Bob sends the number " + string(R2) + " to Alice");
+disp("5) Alice calculates the symmetric key k = " + string(K_Alice));
+disp("6) Bob calculates the symmetric key k = " + string(K_Bob));
+disp("7) Final shared key K_Final = " + string(K_Final));
